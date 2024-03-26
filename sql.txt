@@ -1,0 +1,57 @@
+CREATE TABLE peliculas (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(300),
+    productor_id BIGINT,
+    genro_id BIGINT,
+    stock int(20),
+    slug VARCHAR(300) UNIQUE
+);
+
+CREATE TABLE generos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+   nombre VARCHAR(300),
+   descripcion VARCHAR(500)
+);
+
+CREATE TABLE detalles_productores (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    productor_id BIGINT,
+    biografia VARCHAR(500)
+);
+
+CREATE TABLE prestamos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    pelicula_id BIGINT,
+    usuario_id BIGINT,
+    fecha_prestamo DATE,
+    fecha_devolucion DATE
+);
+
+CREATE TABLE usuarios (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(300),
+    apellido VARCHAR(300),
+    direccion VARCHAR(300),
+    telefono VARCHAR(300)
+);
+
+CREATE TABLE productores (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(300),
+    apellido VARCHAR(300)
+);
+
+ALTER TABLE `detalles_productores`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `productor_id` (`productor_id`);
+
+ALTER TABLE `peliculas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `slug` (`slug`),
+  ADD UNIQUE KEY `productor_id` (`productor_id`,`genro_id`),
+  ADD KEY `genro_id` (`genro_id`);
+
+LTER TABLE `prestamos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pelicula_id` (`pelicula_id`,`usuario_id`),
+  ADD KEY `usuario_id` (`usuario_id`);
