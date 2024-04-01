@@ -1,7 +1,6 @@
 <?php
 include("conexion.php");
 $con = connection();
-
 $sql = "SELECT * FROM peliculas";
 $query = mysqli_query($con, $sql);
 ?>

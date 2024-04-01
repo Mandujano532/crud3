@@ -1,7 +1,6 @@
 <?php
 include("conexion.php");
 $con = connection();
-
 $sql = "SELECT * FROM usuarios";
 $query = mysqli_query($con, $sql);
 ?>
@@ -263,7 +262,7 @@ $query = mysqli_query($con, $sql);
 
                         <!-- Basic Layout & Basic with Icons -->
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Peliculas Registradas</h4>
+                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span> Usuarios Registrados</h4>
                             <div class="card">
 
                                 <div class="table-responsive text-nowrap">

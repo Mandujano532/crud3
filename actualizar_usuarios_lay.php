@@ -1,12 +1,9 @@
 <?php 
     include("conexion.php");
     $con=connection();
-
     $id=$_GET['id'];
-
     $sql="SELECT * FROM usuarios WHERE id='$id'";
     $query=mysqli_query($con, $sql);
-
     $row=mysqli_fetch_array($query);
 ?>
 
@@ -331,7 +328,7 @@
                             <div class="col-xxl">
                                 <div class="card mb-4">
                                     <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5 class="mb-0">Agregar Productor</h5>
+                                        <h5 class="mb-0">Actualizar Usuario</h5>
                                         <form action="editar_usuarios.php" method="POST">
                                     </div>
                                     <div class="card-body">

@@ -1,35 +1,29 @@
 <?php
 include("conexion.php");
 $con = connection();
-
 $id_p = $_GET['id'];
-
 $sql = "SELECT * FROM peliculas p INNER JOIN generos g  ON p.genero_id = g.id INNER JOIN productores r  ON p.productor_id = r.id WHERE id_p='$id_p'";
 $query = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($query);
-function obtenerNombresProductores()
+//funcion para obtener los nombres de los productores registrados en la base de datos
+function getNamesProducers()
 {
     global $con;
-
     $sql = "SELECT id, nombre, apellido FROM productores";
     $resultado = mysqli_query($con, $sql);
-
     $productores = array();
-
     while ($row = mysqli_fetch_array($resultado)) {
         $productores[$row['id']] = $row['nombre'] . " " . $row['apellido'];
     }
     return $productores;
 }
-function obtenerNombresGenero()
+//Funcion para obtener los nombdres de los generos en la base de daots
+function getNamesGender()
 {
     global $con;
-
     $sql = "SELECT id, nombres FROM generos";
     $resultado = mysqli_query($con, $sql);
-
     $generos = array();
-
     while ($row = mysqli_fetch_array($resultado)) {
         $generos[$row['id']] = $row['nombres'];
     }
@@ -373,7 +367,7 @@ function obtenerNombresGenero()
                                                 <div class="col-sm-10">
                                                     <select class="form-control" name="productor_id" required>
                                                         <?php
-                                                        $productores = obtenerNombresProductores();
+                                                        $productores = getNamesProducers();
                                                         foreach ($productores as $id => $nombre) {
                                                             $selected = ($row['productor_id'] == $id) ? 'selected' : '';
                                                             echo "<option value='{$id}' $selected>{$nombre}</option>";
@@ -388,7 +382,7 @@ function obtenerNombresGenero()
                                                     <div class="input-group input-group-merge">
                                                         <select class="form-select" name="genero_id" required>
                                                             <?php
-                                                            $generos = obtenerNombresGenero();
+                                                            $generos = getNamesGender();
                                                             foreach ($generos as $id => $nombre) {
                                                                 $selected = ($row['genero_id'] == $id) ? 'selected' : '';
                                                                 echo "<option value='{$id}' $selected>{$nombre}</option>";

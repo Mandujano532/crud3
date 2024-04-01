@@ -1,12 +1,9 @@
 <?php 
     include("conexion.php");
     $con=connection();
-
     $id=$_GET['id'];
-
     $sql="SELECT * FROM generos WHERE id='$id'";
     $query=mysqli_query($con, $sql);
-
     $row=mysqli_fetch_array($query);
 ?>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">

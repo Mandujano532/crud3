@@ -1,16 +1,14 @@
 <?php
-
 include("conexion.php");
 $con = connection();
-
 $id_p=$_POST["id_p"];
 $titulo = $_POST['titulo'];
 $productor = $_POST['productor_id'];
 $genero = $_POST['genero_id'];
 $stock = $_POST['stock'];
 $slug = null;
-function generarSlug($slug) {
-    
+//funcion para quitar todas las ' caracteres espciales
+function generateSlug($slug) {
     $slug = str_replace(
         array('á','à','ä','â','ª','Á','À','Â','Ä'),
         array('a','a','a','a','a','A','A','A','A'),
@@ -43,15 +41,10 @@ function generarSlug($slug) {
     return $slug;
 }
 $slug = $slug = $_POST['titulo'];
-$slug1 = generarSlug($slug);
-
+$slug1 = generateSlug($slug);
 $sql="UPDATE peliculas SET titulo='$titulo', productor_id='$productor', genero_id='$genero', stock='$stock', slug='$slug1' WHERE id_p='$id_p'";
 $query = mysqli_query($con, $sql);
-
 if($query){
     Header("Location: index-peliculas.php");
-}else{
-
 }
-
 ?>

@@ -1,9 +1,7 @@
 <?php 
     include("conexion.php");
     $con=connection();
-
     $id_p=$_GET['id_p'];
-
     $sql="SELECT * FROM peliculas p INNER JOIN generos g  ON p.genero_id = g.id INNER JOIN productores r  ON p.productor_id = r.id WHERE id_p='$id_p'";
     $query=mysqli_query($con, $sql);
     $row=mysqli_fetch_array($query);

@@ -1,15 +1,13 @@
 <?php
 include("conexion.php");
 $con = connection();
-
 $id_p = null;
 $titulo = $_POST['titulo'];
 $productor = $_POST['productor_id'];
 $genero = $_POST['genero_id'];
 $stock = $_POST['stock'];
 $slug = null;
-function generarSlug($slug) {
-    
+function generateSlug($slug) {
     $slug = str_replace(
         array('á','à','ä','â','ª','Á','À','Â','Ä'),
         array('a','a','a','a','a','A','A','A','A'),
@@ -35,27 +33,16 @@ function generarSlug($slug) {
         array('u','u','u','u','U','U','U','U'),
         $slug
     );
-   
     $slug = preg_replace('/[^a-zA-Z0-9\s]/', '', $slug);
     $slug = strtolower(trim($slug));
     $slug = preg_replace('/\s+/', '-', $slug);
     return $slug;
 }
-
-
 $slug = $slug = $_POST['titulo'];
-$slug1 = generarSlug($slug);
-
-
-
+$slug1 = generateSlug($slug);
 $sql = "INSERT INTO peliculas VALUES('$id_p','$titulo','$productor','$genero','$stock', '$slug1')";
 $query = mysqli_query($con, $sql);
-
 if($query){
     Header("Location: index-peliculas.php");
-
-}else{
-
 }
-
 ?>

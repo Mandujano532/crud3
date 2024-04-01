@@ -1,5 +1,4 @@
 <?php
-
 function connection(){
     $host = "localhost";
     $user = "root";
@@ -12,8 +11,5 @@ function connection(){
     mysqli_select_db($connect, $bd);
 
     return $connect;
-
 }
-
-
 ?>

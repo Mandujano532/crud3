@@ -1,7 +1,6 @@
 <?php
 include("conexion.php");
 $con = connection();
-
 $sql = "SELECT * FROM peliculas";
 $query = mysqli_query($con, $sql);
 ?>
@@ -350,8 +349,6 @@ $query = mysqli_query($con, $sql);
                                                             <option value="<?php echo $opciones['id'] ?>">
                                                                 <?php echo $opciones['nombre'] . " " . $opciones['apellido'] ?>
                                                             </option>
-
-
                                                         <?php endforeach ?>
                                                     </select>
                                                 </div>
@@ -371,8 +368,6 @@ $query = mysqli_query($con, $sql);
                                                                 <option value="<?php echo $opciones['id'] ?>">
                                                                     <?php echo $opciones['nombres'] ?>
                                                                 </option>
-
-
                                                             <?php endforeach ?>
                                                         </select>
 

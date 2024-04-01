@@ -1,7 +1,6 @@
 <?php
 include("conexion.php");
 $con = connection();
-
 $sql = "SELECT * FROM usuarios";
 $query = mysqli_query($con, $sql);
 ?>
@@ -326,7 +325,7 @@ $query = mysqli_query($con, $sql);
                             <div class="col-xxl">
                                 <div class="card mb-4">
                                     <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5 class="mb-0">Agregar Productor</h5>
+                                        <h5 class="mb-0">Agregar Usuario</h5>
                                         <form action="insertar_usuarios.php" method="POST">
                                     </div>
                                     <div class="card-body">
